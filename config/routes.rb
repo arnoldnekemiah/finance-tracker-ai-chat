@@ -5,6 +5,27 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
+  # API routes
+  namespace :api do
+    namespace :v1 do
+      # Chat endpoints
+      resources :chat, only: [] do
+        collection do
+          post :messages, to: "chat#create"
+          get :conversations, to: "chat#index"
+        end
+      end
+      get "chat/conversations/:id", to: "chat#show"
+
+      # Notifications endpoints
+      get "notifications/preferences", to: "notifications#show_preferences"
+      put "notifications/preferences", to: "notifications#update_preferences"
+      
+      # Webhooks
+      post "webhooks/fcm_token", to: "notifications#register_fcm_token"
+    end
+  end
+
   # Defines the root path route ("/")
   # root "posts#index"
 end

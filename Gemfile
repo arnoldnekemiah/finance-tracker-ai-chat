@@ -23,13 +23,27 @@ gem "solid_queue"
 gem "bootsnap", require: false
 
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
-gem "kamal", require: false
+# Temporarily disabled due to Ruby 3.4 compatibility issues
+# gem "kamal", require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-# gem "rack-cors"
+gem "rack-cors"
+
+# Firebase and Google Cloud integrations
+gem "google-cloud-firestore"
+gem "googleauth"
+gem "jwt"
+
+# Redis for caching and rate limiting
+gem "redis"
+gem "hiredis"
+
+# HTTP client for Gemini API
+gem "faraday"
+gem "faraday-retry"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

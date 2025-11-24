@@ -9,6 +9,26 @@
 #     priority: 2
 #     schedule: at 5am every day
 
+# Solid Queue recurring jobs configuration
+# Run bin/jobs work to start the Solid Queue worker
+#
+# For more configuration options, see https://github.com/basecamp/solid_queue#recurring-tasks
+
+# Daily summary - runs every hour to check for users whose notification time has arrived
+daily_summary:
+  class: DailySummaryJob
+  schedule: every hour
+
+# Budget alerts - runs every 2 hours
+budget_alerts:
+  class: BudgetAlertJob
+  schedule: every 2 hours
+
+# Spending reminders - runs once daily at 8 PM UTC
+spending_reminders:
+  class: SpendingReminderJob
+  schedule: "0 20 * * *" # 8 PM UTC daily
+
 production:
   clear_solid_queue_finished_jobs:
     command: "SolidQueue::Job.clear_finished_in_batches(sleep_between_batches: 0.3)"
