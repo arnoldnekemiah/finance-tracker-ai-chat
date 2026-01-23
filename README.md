@@ -75,7 +75,7 @@ Save and exit.
 
 The Gemini API key provided in the PRD:
 ```
-AIzaSyCMmDYunEKrpMichbMYQCet5QnRQUyFF8M
+AIz*****************************
 ```
 
 Add this to your credentials file in the `gemini.api_key` field.
